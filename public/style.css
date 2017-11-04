@@ -32,3 +32,79 @@ body {
 .signup-form {
   display: none;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+
+.underline-text{
+  text-decoration: underline;
+}
+
+a:hover {
+  color:black;
+}
+
+.nav-tabs-form{
+  padding: 5px 10px 5px 10px;
+  border: solid 1px black;
+  background-color: purple;
+  color: black;
+}
+
+.test-box{
+  border: 1px solid black;
+  /* border-radius: 5px;  */
+  height: 150px;
+}
+.test-box2{
+  border: 1px solid black;
+  /* border-radius: 5px;  */
+  height: 400px;
+  overflow: scroll;
+}
+
+.idea {
+  font-family: 'Open Sans', sans-serif;  
+  padding: 15px;
+  margin: 10px;
+  background: rgba(204, 204, 204, 0.3);
+}
+
+.idea-title {
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+.idea-author {
+  font-style: italic;
+  text-decoration: none;
+}
+
+.idea-title:hover {
+  text-decoration: underline;
+}
+
+.idea-description {
+  margin-top: 5px;
+}
+
+.idea-vote {
+  vertical-align: sub;
+}
+
+.idea-tags {
+  border-left: 1px solid black;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+.idea-tag {
+  font-weight: 100;
+  color: gray;
+  border-bottom: 1px dashed gray;
+  font-style: italic;
+}
+.idea-tag:not(:last-child)::after {
+  content: ','
+}
