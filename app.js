@@ -15,21 +15,27 @@ app.engine('.hbs', exphbs({
   extname: '.hbs'
 }));
 app.set('view engine', '.hbs');
+
 app.set('trust proxy', 1);
 
 app.use(helmet());
+
+/*
 app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com'],
-    scriptSrc: ["'self'", 'use.fontawesome.com']
-  }
+directives: {
+defaultSrc: ["'self'"],
+styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com'],
+scriptSrc: ["'self'", 'use.fontawesome.com']
+}
 }));
+*/
 
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
-  if ('body' in req) console.log(req.body);
+  if ('body' in req && Object.getOwnPropertyNames(req.body).length > 0) {
+    // console.log(req.body);
+  }
   next();
 });
 
@@ -60,7 +66,6 @@ app.get('/', (req, res) => {
 
 app.use('/login', login);
 
-// app.get('/user', );
 const port = 3000;
 const server = app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

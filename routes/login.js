@@ -5,48 +5,68 @@ var router = express.Router();
 
 const db = require('../db');
 const validate = require('../validate');
+const User = require('../user');
 
 // routes
 router.get('/', (req, res) => {
-  console.log('login visit');
-  console.log(req.query);
-  if (req.query.error) {
+  if ('error' in req.query) {
     res.render('login', {
+      layout: 'base',
       error: true
     });
+  } else if ('success' in req.query) {
+    res.render('login', {
+      layout: 'base',
+      success: true
+    });
   } else {
-    res.render('login');
+    console.log(req.query);
+    res.render('login', {
+      layout: 'base'
+    });
+  }
+});
+
+router.post('/register', (req, res) => {
+  let body = req.body;
+  body.displayName = body.displayName || body.email;
+  if (!validate.register(body)) {
+    console.log('validation error');
+    res.redirect('/login?error=validation#register');
+  } else {
+    try {
+      let user = new User(body.email, body.pass, body.displayName);
+    } catch(err) {
+      console.log('user init error');
+      console.log(err);
+      res.redirect('/login?error=userInit#register');
+      return;
+    }
+    let result = db.register(body);
+    if (result) {
+      res.redirect('/login?success');
+    } else {
+      console.log('db error');
+      res.redirect('/login?error=dbReg#register')
+    }
   }
 });
 
 router.post('/', (req, res) => {
   let body = req.body;
   if (!validate.login(body)) {
-    res.redirect(400, '/login?error');
+    console.log('login error');
+    res.redirect('/login?=error=login');
   } else {
-    db.login(body);
+    var result = db.login(body);
+    if (result) {
+      res.redirect('/');
+    } else {
+      res.redirect('/login?error');
+    }
   }
 });
 
-router.post('/register', (req, res) => {
-  let body = req.body;
-  body.displayName = displayName || body.email;
-  if (!validate.register(body)) {
-    res.redirect(400, '/login?error#register');
-  } else {
-    try {
-      let user = new User(body.email, body.pass, body.displayName);
-    } catch(err) {
-      res.redirect(400, '/login?error#register');
-    }
-    let result = db.register(user);
-    if (result) {
-      res.redirect('/login?success');
-    } else {
-      res.redirect('/login?error#register')
-    }
-  }
-});
 
 // exports
 module.exports = router;

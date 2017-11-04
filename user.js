@@ -1,18 +1,23 @@
 const validate = require('./validate.js');
 const hash = require('./hash.js');
+const db = require('./db');
 
 class User {
   constructor(email, password, displayName) {
-    if (typeof displayName === 'undefined') displayName = email;
-    let validateObj = {email:email, password:password, displayName:displayName};
-    if (!validate.user(validateObj)) throw new Error("invalid user");
+    var validateObj = {email: email, pass: password, }
+    validateObj.displayName = displayName || email;
+
+    if (!validate.user(validateObj)) {
+      console.log(validateObj);
+      throw new Error("invalid user");
+    }
     this.email = email;
     this.pass = hash.hash(password);
     this.displayName = displayName;
     db.id().then((id) => {
       this.id = id;
+      console.log(id);
     });
-    console.log(this.id);
   }
 }
 
@@ -20,7 +25,4 @@ function userLoad(email, password, displayName) {
   return new User(email, password, displayName);
 }
 
-module.exports = {
-  User: User,
-
-}
+module.exports = User;

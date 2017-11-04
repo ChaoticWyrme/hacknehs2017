@@ -4,35 +4,50 @@
     <input type="email" name="email" /> Password:
     <input type="password" name="pass" />
     <input type="submit" value="Sign In">
-    <a href="#" id="signup-link">Or sign up</a>
+    <a href="#register" id="signup-link">Or sign up</a>
   </form>
   <form class="signup-form" action="/login/register" method="POST">
     <b>Sign Up</b><br /><br /> Email:
     <input type="email" name="email" /> Nickname:
-    <input type="text" name="displayName" /> Password: 
+    <input type="text" name="displayName" /> Password:
     <input type="password" name="pass" /> Confirm password:
     <input type="password" name="passConfirm" />
     <input type="submit" value="Sign Up">
-    <a href="#" id="signin-link">Or sign in</a>
+    <a href="#login" id="signin-link">Or sign in</a>
   </form>
   {{#if error}}
-    <div class="error-message">There was an error logging in/signing up</div>
+    <div class=".alert .alert-danger">There was an error logging in/signing up</div>
+  {{/if}}
+  {{#if success}}
+    <div class=".alert .alert-success">Successfully registered</div>
   {{/if}}
 </div>
 
 <script>
-  const signupForm = document.getElementsByClassName('signup-form')[0];
-  const signinForm = document.getElementsByClassName('signin-form')[0];
+(()=>{
+  var signupForm = document.getElementsByClassName('signup-form')[0];
+  var signinForm = document.getElementsByClassName('signin-form')[0];
 
-  document.getElementById('signin-link').onclick = function() {
+  function showLogin() {
+    console.log('Login');
     signupForm.style.display = 'none';
     signinForm.style.display = 'block';
+    location.hash = 'login';
   }
+  self.showLogin = showLogin;
 
-  document.getElementById('signup-link').onclick = function() {
+  function showRegister() {
+    console.log('Register');
     signupForm.style.display = 'block';
     signinForm.style.display = 'none';
+    location.hash = 'register';
   }
+
+  self.showRegister = showRegister;
+
+  document.getElementById('signin-link').onclick = showLogin;
+  document.getElementById('signup-link').onclick = showRegister;
+
 
   signupForm.onsubmit = function() {
     const passwords = signupForm.querySelectorAll('input[type="password"');
@@ -41,4 +56,11 @@
       alert('Passwords must match');
     }
   }
+  if (location.hash.toLowerCase() === '#register') {
+    showRegister();
+  } else if (location.hash.toLowerCase === '#login'){
+    showLogin();
+  }
+})();
 </script>
+<script href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

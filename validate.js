@@ -1,6 +1,8 @@
 // ./validate.js
 // all function return true or false
 
+const log = false;
+
 class ValidationError {
   constructor(type) {
     switch (type) {
@@ -23,18 +25,24 @@ const patterns = {
 }
 
 function validateEmail(email) {
-  return patterns.email.test(email);
+  var result = patterns.email.test(email);
+  if (log && !result) console.log('email error');
+  return result;
 }
 
 function validatePass(password) {
-  return patterns.password.test(password);
+  var result =  patterns.password.test(password);
+  if (log && !result) {
+    console.log('password error');
+  }
+  return result;
 }
 
 function validateUser(user) {
-  var result = true;
-  result = result &&
-  'email' in user && validateEmail(user.email) &&
-  'password' in user && validatePass(user.pass);
+  var emailCheck = typeof user.email === 'string' && validateEmail(user.email);
+  var passCheck = typeof user.pass === 'string' && validatePass(user.pass);
+  var result = emailCheck && passCheck;
+  if (log) console.log(`email: ${emailCheck}, pass: ${passCheck}, result: ${result}`);
   return result;
 }
 
