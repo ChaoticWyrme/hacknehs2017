@@ -6,7 +6,7 @@ const cookieSession = require('cookie-session');
 const exphbs  = require('express-handlebars');
 
 // routes
-const login = require('./routes/login.js')
+const login = require('./routes/login');
 
 const app = express();
 
@@ -37,6 +37,8 @@ app.use(cookieSession({
   secret: 'nomNomNomOnSandvich'
 }));
 
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
   res.render('idea-list', {
     ideas: [
@@ -55,6 +57,10 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use(express.static('public'));
+app.use('/login', login);
+
 // app.get('/user', );
-const server = app.listen(3000);
+const port = 3000;
+const server = app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});

@@ -56,8 +56,8 @@ async function getUser(email) {
   });
 }
 
-function getUID() {
-  return await user.incrAsync();
+async function getUID() {
+  return await client.incrAsync('id:user');
 }
 
 

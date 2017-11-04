@@ -8,6 +8,8 @@ const validate = require('../validate');
 
 // routes
 router.get('/', (req, res) => {
+  console.log('login visit');
+  console.log(req.query);
   if (req.query.error) {
     res.render('login', {
       error: true

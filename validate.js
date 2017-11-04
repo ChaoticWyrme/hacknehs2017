@@ -1,16 +1,16 @@
 // ./validate.js
 // all function return true or false
 
-class ValidationError: Error {
+class ValidationError {
   constructor(type) {
     switch (type) {
       case 'user':
-        super("Invalid user.");
+        this.message = "Invalid user";
         this.type = 'user';
         break;
       case 'password':
       case 'pass':
-        super("Invalid password");
+        this.message = "Invalid password";
         this.type = 'pass';
         break;
     }
@@ -19,7 +19,7 @@ class ValidationError: Error {
 
 const patterns = {
   email: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-  password: /^.*{8,255}$/
+  password: /^.{8,255}$/
 }
 
 function validateEmail(email) {
@@ -45,7 +45,8 @@ function validateRegistration(user) {
 module.exports = {
   password: validatePass,
   email: validateEmail,
-  user: validateUser
+  user: validateUser,
   login: validateUser,
-  register: validateRegistration
+  register: validateRegistration,
+  ValidationError: ValidationError
 }
