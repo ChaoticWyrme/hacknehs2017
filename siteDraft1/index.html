@@ -1,120 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by Ryan Au</title>
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
 
 </head>
+
 <body>
-
-<script src="https://use.fontawesome.com/91f95d9bf0.js"></script>
-</div>
-<!--Web UI-->
-<div class="container">
-  <!--Header-->
-  <div class="row">
-    <!--Logo-->
-    <div class="col-md-3 test-box">
+  <br/>
+  <!--Web UI-->
+  <div class="container">
+    <!--Header-->
+    <div class="row">
+      <!--Logo-->
+      <div class="col-md-3 test-box">
         <img src="">Insert Logo Image Here</img>
-    </div>
-    <!--Site Info Section-->
-    <div class="col-md-9">
+      </div>
+      <!--Site Info Section-->
+      <div class="col-md-9">
+        <!--Category Tabs-->
+        <div class="container">
+          <h1>Thought Cyclone</h1>
 
-    </div>
-  </div>
-  <br/>
-  <!--Navigation Tabs-->
-  <div class="row">
-    <ul class="nav nav-tabs">
-      <li><a class="nav-tabs-form" href="#">Home</a></li>
-      <li><a class="nav-tabs-form" href="#">Title Generator</a></li>
-      <li><a class="nav-tabs-form" href="#">Menu 2</a></li>
-      <li><a class="nav-tabs-form" href="#">Menu 3</a></li>
-    </ul>
-  </div>
-  <br/>
-  <!--Body-->
-  <div class="row">
-    <!--Filter Category-->
-    <div class="col-md-2 ">
-      <h4>Filter:</h4>
-      <div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="">mobile</label>
         </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="">cool</label>
+        <!--Profile Tabs-->
+        <div>
+
         </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="">stuff</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="">example</label>
-        </div>
-      </div>
-      <h4>Sort By:</h4>
-      <div class="radio">
-        <label><input type="radio" name="radio">Popularity</label>
-      </div>
-      <div class="radio">
-        <label><input type="radio" name="radio">Recent</label>
-      </div>
-      <div class="radio">
-        <label><input type="radio" name="radio">Relevance</label>
       </div>
     </div>
-    <!--Post -->
-    <div class="col-md-10">
-
-      <h2>Posts</h2>
-      <div style="border: grey 1px solid; border-radius: 5px;">
-
+    <br/>
+    <!--Navigation Tabs-->
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <ul class="nav nav-tabs navbar-right">
+          <!--Right-side Navigation-->
+          <li class="active"><a class="nav-tabs-form" href="#">Profile</a></li>
+          <li><a class="nav-tabs-form disable" href="#">Sign In</a></li>
+          <li><a class="nav-tabs-form" href="#"></a></li>
+        </ul>
+        <ul class="nav nav-tabs">
+          <!--Left-side Navigation-->
+          <li class="active"><a class="nav-tabs-form" href="#">Home</a></li>
+          <li><a class="nav-tabs-form" href="#">Posts</a></li>
+          <li><a class="nav-tabs-form" href="#">Tools</a></li>
+          <li><a class="nav-tabs-form" href="#">Dashboard</a></li>
+        </ul>
       </div>
-      <div class="idea-list">
-        <div class="idea">
-          <div class="idea-title">App That Does Cool Stuff</div>
-          <a class="idea-author" href="#">John Doe</a>
-          <div class="idea-description">This app would do this, that, some other stuff, and all of the stuff that it would do would be some really cool things. Also, there would be a feature... <a href="#">more...</a></div>
-          <div class="idea-details">
-            <span class="idea-score">3100</span>
-            <span class="idea-vote">
+    </div>
+    <br/>
+    <!--Body-->
+    <div class="row">
+      <!--Filter Category-->
+      <div class="col-md-2 grey-background">
+        <h4>Filter:</h4>
+        <div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">mobile</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">cool</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">stuff</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">example</label>
+          </div>
+        </div>
+        <h4>Sort By:</h4>
+        <div class="radio">
+          <label><input type="radio" name="radio">Popularity</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="radio">Recent</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="radio">Relevance</label>
+        </div>
+      </div>
+      <!--Post -->
+      <div class="col-md-10">
+
+        <h2>Posts</h2>
+        <div style="border: grey 1px solid; border-radius: 5px;">
+
+        </div>
+        <div class="idea-list">
+          <div class="idea">
+            <div class="idea-title">App That Does Cool Stuff</div>
+            <a class="idea-author" href="#">John Doe</a>
+            <div class="idea-description">This app would do this, that, some other stuff, and all of the stuff that it would do would be some really cool things. Also, there would be a feature... <a href="#">more...</a></div>
+            <div class="idea-details">
+              <span class="idea-score">3100</span>
+              <span class="idea-vote">
               <i class="fa fa-2x fa-angle-up" aria-hidden="true"></i>
               <i class="fa fa-2x fa-angle-down" aria-hidden="true"></i>
             </span>
-            <span class="idea-tags">Tags: 
+              <span class="idea-tags">Tags:
               <span class="idea-tag">mobile</span>
               <span class="idea-tag">cool</span>
               <span class="idea-tag">stuff</span>
-            </span>
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="idea">
-          <div class="idea-title">Example Application</div>
-          <a class="idea-author" href="#">Jane Smith</a>
-          <div class="idea-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in lorem eget nibh scelerisque feugiat. Nullam malesuada, est ultrices blandit tristique <a href="#">more...</a></div>
-          <div class="idea-details">
-            <span class="idea-score">2906</span>
-            <span class="idea-vote">
+          <div class="idea">
+            <div class="idea-title">Example Application</div>
+            <a class="idea-author" href="#">Jane Smith</a>
+            <div class="idea-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in lorem eget nibh scelerisque feugiat. Nullam malesuada, est ultrices blandit tristique <a href="#">more...</a></div>
+            <div class="idea-details">
+              <span class="idea-score">2906</span>
+              <span class="idea-vote">
               <i class="fa fa-2x fa-angle-up" aria-hidden="true"></i>
               <i class="fa fa-2x fa-angle-down" aria-hidden="true"></i>
             </span>
-            <span class="idea-tags">Tags: 
+              <span class="idea-tags">Tags:
               <span class="idea-tag">lorem ipsum</span>
               <span class="idea-tag">example</span>
               <span class="idea-tag">application</span>
-            </span>
+              </span>
+            </div>
           </div>
         </div>
+        <script src="https://use.fontawesome.com/91f95d9bf0.js"></script>
       </div>
-
-      <script src="https://use.fontawesome.com/91f95d9bf0.js"></script>
     </div>
   </div>
-</div>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
