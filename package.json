@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/ChaoticWyrme/hacknehs2017/issues"
   },
-  "homepage": "https://github.com/ChaoticWyrme/hacknehs2017#readme"
+  "homepage": "https://github.com/ChaoticWyrme/hacknehs2017#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "express": "^4.16.2",
+    "redis": "^2.8.0"
+  }
 }
