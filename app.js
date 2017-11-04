@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
   if ('body' in req) console.log(req.body);
+  next();
 });
 
 app.use(cookieSession({
