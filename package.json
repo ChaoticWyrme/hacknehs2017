@@ -2,7 +2,7 @@
   "name": "hacknehs2017",
   "version": "1.0.0",
   "description": "Submission by the Ctrl-z team for hacknehs 2017",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,6 +26,7 @@
   "dependencies": {
     "bcrypt": "^1.0.3",
     "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
     "redis": "^2.8.0"
   }
 }

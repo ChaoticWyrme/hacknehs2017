@@ -23,4 +23,11 @@ function registerUser(user) {
 
 function getUser(email) {
   client.hgetall(`user:${email}`);
+  var user = {email: email};
+  for (let entry of Object.entries(user)) {
+    user[entry[0]] = entry[1];
+  }
 }
+
+
+module.export
