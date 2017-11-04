@@ -11,7 +11,7 @@ client.on('error', function(err) {
 });
 
 const validate = require('./validate.js');
-const hash = require('./hash')
+const hash = require('./hash');
 
 async function registerUser(user) {
   // load user object into server
@@ -35,7 +35,7 @@ async function authUser(user) {
     return client.hmget(`user:${user.id}`, 'email', 'pass');
   })
   .then((dbUser) => {
-    if (user.email === dbUser[0] && passdbUser[1]) {
+    if (user.email === dbUser[0] && hash.check(user.pass, passdbUser[1])) {
       return true;
     } else {
       return false;
