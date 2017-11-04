@@ -6,26 +6,21 @@ client.on('error', function(err) {
   console.log("Error" + err);
 });
 
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const validate = require('./validate.js');
 
-function hashPass(password, cb) {
-  if (typeof cb !== 'function') {
-    return bcrypt.hash(password, saltRounds)
-  } else {
-    bcrypt.hash(password, saltRounds).then(cb);
-  }
-}
-
-function checkPass(plaintext, hash, cb) {
-  if (typeof cb === 'function') {
-    bcrypt.compare(plaintext, hash).then(cb);
-  } else {
-    return bcrypt.compare(plaintext, hash);
-  }
-}
-
-function registerUser(settings) {
+function registerUser(user) {
   // load user object into server
-  
+  // email: email address
+  //
+  if (!('email' in user && 'pass' in user && 'displayName' in user)) {
+    throw new Error("invalid user");
+  }
+  var key = "user:"+user.email
+  for (let entry of Object.entries(user)) {
+    client.hset(key, entry[0], entry[1]);
+  }
+}
+
+function getUser(email) {
+  client.hgetall(`user:${email}`);
 }
