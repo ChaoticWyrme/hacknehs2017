@@ -1,5 +1,6 @@
 const validate = require('./validate.js');
-const pass = require('./pass.js')
+const pass = require('./pass.js');
+
 
 class User {
   constructor(email, password, displayName) {
@@ -11,4 +12,8 @@ class User {
     this.pass = pass.hash(password);
     this.displayName = displayName;
   }
+}
+
+module.exports = {
+
 }
