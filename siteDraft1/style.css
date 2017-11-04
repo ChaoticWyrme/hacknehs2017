@@ -50,14 +50,11 @@ a:hover {
   color: black;
 }
 
-.logo-box{
+.test-box{
+  border: 1px solid black;
   /* border-radius: 5px;  */
-  width:100px;
-  height:100px;
-  margin:0px;
-  padding:0px;
+  height: 150px;
 }
-
 .test-box2{
   border: 1px solid black;
   /* border-radius: 5px;  */
@@ -66,9 +63,9 @@ a:hover {
 }
 
 .idea {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;  
   padding: 15px;
-  margin: 10px 0px;
+  margin: 10px;
   background: rgba(204, 204, 204, 0.3);
 }
 
