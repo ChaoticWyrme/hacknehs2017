@@ -34,12 +34,18 @@ function validateUser(user) {
   var result = true;
   result = result &&
   'email' in user && validateEmail(user.email) &&
-  'password' in user && validatePass(user.passsword);
+  'password' in user && validatePass(user.pass);
   return result;
+}
+
+function validateRegistration(user) {
+  return validateUser(user) && (user.pass === user.passConfirm);
 }
 
 module.exports = {
   password: validatePass,
   email: validateEmail,
   user: validateUser
+  login: validateUser,
+  register: validateRegistration
 }

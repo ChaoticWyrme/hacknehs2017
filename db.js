@@ -1,33 +1,68 @@
 // redis init
+const bluebird = require('bluebird');
 const redis = require('redis');
-      client = redis.createClient();
+
+bluebird.promisifyAll(redis.RedisClient.prototype);
+bluebird.promisifyAll(redis.Multi.prototype);
+const client = redis.createClient();
 
 client.on('error', function(err) {
   console.log("Error" + err);
 });
 
 const validate = require('./validate.js');
+const hash = require('./hash')
 
-function registerUser(user) {
+async function registerUser(user) {
   // load user object into server
-  // email: email address
-  //
-  if (!('email' in user && 'pass' in user && 'displayName' in user)) {
-    throw new Error("invalid user");
+  // key is "user:user.id"
+  // email: user.email // user email / login
+  // pass: user.pass // hashed password
+  // displayName: user.displayName
+  var key = `user:${user.id}`;
+  if(await client.existsAsync(key)) {
+    return false;
   }
-  var key = "user:"+user.email
-  for (let entry of Object.entries(user)) {
-    client.hset(key, entry[0], entry[1]);
-  }
+  client.hmset(key, ['email', user.email, 'pass', user.pass, 'displayName', user.displayName]);
+  client.set(`login:${user.email}`, user.id);
+  return true;
 }
 
-function getUser(email) {
-  client.hgetall(`user:${email}`);
-  var user = {email: email};
-  for (let entry of Object.entries(user)) {
-    user[entry[0]] = entry[1];
-  }
+async function authUser(user) {
+  // user: {email, pass} pass=hashed password
+  return client.getAsync(`login:${user.email}`)
+  .then((id) => {
+    return client.hmget(`user:${user.id}`, 'email', 'pass');
+  })
+  .then((dbUser) => {
+    if (user.email === dbUser[0] && passdbUser[1]) {
+      return true;
+    } else {
+      return false;
+    }
+  }).catch(() => {
+    return false;
+  });
+
+}
+
+async function getUser(email) {
+  return await client.hgetallAsync(`user:${email}`).then((dbUser) => {
+    var user = {email: email};
+    for (let entry of Object.entries(dbUser)) {
+      user[entry[0]] = entry[1];
+    }
+    return user;
+  });
+}
+
+function getUID() {
+  return await user.incrAsync();
 }
 
 
-module.export
+module.exports = {
+  id: getUID,
+  register: registerUser,
+  login: authUser
+}

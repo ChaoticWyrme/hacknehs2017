@@ -28,6 +28,10 @@ app.use(helmet.contentSecurityPolicy({
 
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.use((req, res, next) => {
+  if ('body' in req) console.log(req.body);
+});
+
 app.use(cookieSession({
   name: 'session',
   secret: 'nomNomNomOnSandvich'
