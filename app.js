@@ -32,7 +32,23 @@ app.use(cookieSession({
   secret: 'nomNomNomOnSandvich'
 }));
 
-app
+app.get('/', (req, res) => {
+  res.render('idea-list', {
+    ideas: [
+      {
+        title: "Test Idea",
+        author: "Some Genius",
+        description: "Be blown away by this amazing idea",
+        score: "10",
+        tags: [
+          "cool",
+          "mind_blowing",
+          "best_thing_ever"
+        ]
+      }
+    ]
+  });
+});
 
 app.use(express.static('public'));
 // app.get('/user', );
