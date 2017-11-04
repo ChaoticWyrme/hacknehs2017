@@ -1,22 +1,60 @@
-<div class="signin-signup">
-    <form class="signin-form">
-        <b>Sign In</b><br /><br />
-        Email:
-        <input type="email" name="email" />
-        Password:
-        <input type="password" name="pass"/>
-        <input type="submit" value="Sign In">
-        <a href="#" id="signup-link">Or sign up</a>
-    </form>
-    <form class="signup-form">
-        <b>Sign Up</b><br /><br />
-        Email:
-        <input type="email" name="email" />
-        Password:
-        <input type="password" name="pass"/>
-        Confirm password:
-        <input type="password" name="pass-confirm"/>
-        <input type="submit" value="Sign Up">
-        <a href="#" id="signin-link">Or sign in</a>
-    </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="signin-signup">
+        <form class="signin-form" action="/login" method="POST">
+          <b>Sign In</b><br /><br />
+          Email:
+          <input type="email" name="email" />
+          Password:
+          <input type="password" name="pass"/>
+          <input type="submit" value="Sign In">
+          <a href="#" id="signup-link">Or sign up</a>
+        </form>
+        <form class="signup-form" action="/login/register" method="POST">
+          <b>Sign Up</b><br /><br />
+          Email:
+          <input type="email" name="email" />
+          Password:
+          <input type="password" name="pass"/>
+          Confirm password:
+          <input type="password" name="pass-confirm"/>
+          <input type="submit" value="Sign Up">
+          <a href="#" id="signin-link">Or sign in</a>
+        </form>
+        {{#if error}}
+        <div class="error-message">There was an error logging in/signing up</div>
+        {{/if}}
     </div>
+
+    <script>
+        const signupForm = document.getElementsByClassName('signup-form')[0];
+        const signinForm = document.getElementsByClassName('signin-form')[0];
+
+        document.getElementById('signin-link').onclick = function() {
+        signupForm.style.display = 'none';
+        signinForm.style.display = 'block';
+        }
+
+        document.getElementById('signup-link').onclick = function() {
+        signupForm.style.display = 'block';
+        signinForm.style.display = 'none';
+        }
+
+        signupForm.onsubmit = function() {
+            const passwords = signupForm.querySelectorAll('input[type="password"'); 
+            if (passwords.value[0] !== passwords.value[1]) {
+                e.preventDefault();
+                alert('Passwords must match');
+            }
+        }
+    </script>
+</body>
+</html>
