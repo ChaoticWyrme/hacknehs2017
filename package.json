@@ -25,8 +25,11 @@
   "homepage": "https://github.com/ChaoticWyrme/hacknehs2017#readme",
   "dependencies": {
     "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
+    "helmet": "^3.9.0",
     "redis": "^2.8.0"
   }
 }
