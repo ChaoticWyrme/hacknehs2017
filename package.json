@@ -1,0 +1,19 @@
+{
+  "name": "hacknehs2017",
+  "version": "1.0.0",
+  "description": "Submission by the Ctrl-z team for hacknehs 2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https//github.com/ChaoticWyrme/hacknehs2017.git"
+  },
+  "author": "Mason Osborn, Matan Kotler-Berkowitz, Christopher Tam, Ryan Au, Austin Au",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChaoticWyrme/hacknehs2017/issues"
+  },
+  "homepage": "https://github.com/ChaoticWyrme/hacknehs2017#readme"
+}
